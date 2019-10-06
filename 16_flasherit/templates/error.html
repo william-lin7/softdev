@@ -1,0 +1,25 @@
+{% extends "template.html" %}
+
+{% block title %} Error :( {% endblock %}
+
+{% block content %}
+  {% for message in get_flashed_messages() %}
+    {{ message }} <br>
+  {% endfor %}
+  <h1> Uh oh! Something went wrong :( </h1>
+  {% if whichError == 0 %}
+  Your password is incorrect
+  {% endif %}
+
+  {% if whichError == 1 %}
+  Your username and password are incorrect
+  {% endif %}
+
+  {% if whichError == 2 %}
+  Your username is incorrect
+  {% endif %}
+  <br>
+  <form method="POST" action="/">
+    <input type="submit" name="submit" value="Go Back">
+  </form>
+{% endblock %}
