@@ -37,6 +37,13 @@ with open('students.csv', 'r') as csvfile:
 command = "CREATE TABLE stu_avg(name TEXT, id INTEGER, avg NUMERIC);"
 c.execute(command)
 
+
+def addRow(text, mark, id): #method to add a new element to the courses table, assuming it exists
+    newRow = (text, mark, id) #converts input elements into a list
+    c.execute("INSERT INTO courses VALUES(?, ?, ?);", newRow) #adds the new elements into the table as a new row
+
+addRow("systems", 65, 11) #testing the addRow method
+
 q = """
 SELECT name, students.id, mark
 FROM students, courses
