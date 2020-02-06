@@ -1,3 +1,10 @@
+/*
+William Lin, Tyler Huang
+SoftDev Pd. 2
+K #04: I See a Red Door...
+2020-02-05
+*/
+
 var c = document.getElementById("slate");
 //console.log(c);
 var ctx = c.getContext("2d");
