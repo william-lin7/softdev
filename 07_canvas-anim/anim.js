@@ -44,7 +44,14 @@ var stop = function(event){
 }
 
 var button1 = document.getElementById('animate');
-button1.addEventListener('click', animate);
+button1.addEventListener('click', function(event){
+  if (!stop){
+    event.preventDefault();
+  }
+  else{
+    animate();
+  }
+});
 
 var button2 = document.getElementById('stop');
 button2.addEventListener('click', stop);
