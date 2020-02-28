@@ -9,7 +9,7 @@ from pymongo import MongoClient
 
 client = MongoClient('localhost', 27017)
 db = client['test']
-collection = db.restaurants #creates a collection for the restaurants
+collection = db.restaurants
 
 if (collection.count()==0):
     file = open("primer-dataset.json", "r")
@@ -17,7 +17,6 @@ if (collection.count()==0):
     for line in content:
         collection.insert_one(loads(line))
 
-# Specified borough
 def findBorough(borough):
      data = collection.find({"borough": borough})
      for item in data:
@@ -26,7 +25,6 @@ def findBorough(borough):
                 print("{name: %s}" % value)
 
 
-# Specified zip codefor item in data:
 def findZipCode(zipcode):
      data = collection.find({"address.zipcode": zipcode})
      for item in data:
@@ -34,7 +32,6 @@ def findZipCode(zipcode):
             if key == "name":
                 print("{name: %s}" % value)
 
-# Specified zip code & grade
 def findZipGrade(zipcode, grade):
      data = collection.find({"address.zipcode": zipcode, "grades.0.grade": grade})
      for item in data:
@@ -42,7 +39,6 @@ def findZipGrade(zipcode, grade):
             if key == "name":
                 print("{name: %s}" % value)
 
-# Specified zip code w/ score below a threshold
 def findZipScore(zipcode, score):
      data = collection.find({"address.zipcode": zipcode, "grades.0.score": {"$lte": score}})
      for item in data:
@@ -50,7 +46,6 @@ def findZipScore(zipcode, score):
             if key == "name":
                 print("{name: %s}" % value)
 
-# Something more clever
 def findZipCuisine(zipcode, cuisine):
      data = collection.find({"address.zipcode": zipcode, "cuisine": cuisine})
      for item in data:
