@@ -1,0 +1,28 @@
+<!--
+William Lin
+SoftDev pd2
+K #15: Capture Bubble Toil Trouble
+2020-04-01
+-->
+
+1) I think clicking on any of the names in the table will cause an alert
+   to pop up that shows the name as the alert message because each name is
+   associated with an event listener that triggers the clicky function.
+   This was a correct observation.
+
+
+2) This is pretty much the same as the first demo, except it includes more
+   features that send alerts when clicking the table too. When a user clicks
+   on a cell, the names would probably pop up in the order that they were
+   typed in. I'm not sure what clicking on the table will print. Upon further
+   observation, clicking on the table results in an alert message that shows
+   the html-formatted body of the table.
+
+3) Builds off of question 2. When the stopPropagation function is uncommented,
+   it would probably stop the table front showing an alert message. Upon
+   observation, I was wrong. The function actually prevents the individual
+   name from being alerted, but still shows the alert message of the table.
+
+4) The order does matter because whichever comes first is run first. But I
+   turned out to be wrong, because it was actually in the reverse order.
+   The events ran from bottom to top.
