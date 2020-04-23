@@ -1,5 +1,5 @@
-#William Lin
-#SoftDev1 pd2
+#Yevgeniy Gorbachev
+#SoftDev1 pd1
 #K<n> -- <K<n>.__name__>
 #ISO 8601 Date
 
@@ -17,13 +17,14 @@ def index():
 @app.route('/data')
 def data():
 	files = {
-		'dataset1':'data/CAERS_ASCII_2004_2017Q2.csv' # REPLACE WHEN IN USE
+		'dataset1':'data/data.csv'
 	}
 	try:
-		return send_from_directory('csv', files[request.args['file']])
-	except KeyError:
+		return send_file(files[request.args['file']], attachment_filename='dataset1.csv')
+	except KeyError as kerr:
+		print(kerr)
 		abort(404)
 
 application = app
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
